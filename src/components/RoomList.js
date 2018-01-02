@@ -28,4 +28,4 @@ export class RoomList extends Component {
   }
 }
 
-export default RoomList
+export default RoomList;
