@@ -30,8 +30,10 @@ this.setState({ activeRoom: room })
     const showMessages = this.state.activeRoom;
     return (
       <div>
-        <h1>{this.state.activeRoom.title || "Select A Room"}</h1>
+      <div className="check">
+        <h1>{this.state.activeRoom.name != undefined? "You selected " + this.state.activeRoom.name : "Select a Room"}</h1>
         <RoomList firebase={firebase} activeRoom={this.activeRoom} />
+        </div>
         { showMessages ?
         (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key}/>)
         : (null)

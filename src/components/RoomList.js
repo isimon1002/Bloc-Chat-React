@@ -42,7 +42,7 @@ createRoom(e) {
 
     const roomForm = (
     <form onSubmit={this.createRoom}>
-      <input type="text" value={this.state.name} placeholder="Enter Room Name" onChange={this.handleChange}/>
+      <input type="text" value={this.state.name} placeholder="Create new room" onChange={this.handleChange}/>
       <input type="submit" value="Create" />
     </form>
   );
@@ -50,6 +50,7 @@ createRoom(e) {
     return(
       <div>
       {roomForm}
+      <h4>Existing rooms</h4>
       <ul>{roomList}</ul>
       </div>
     );

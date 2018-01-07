@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/MessageList.css';
 
 export class MessageList extends Component {
   constructor(props) {
@@ -59,7 +60,11 @@ export class MessageList extends Component {
     const messageList = (
       this.state.messages.map((message) => {
         if (message.roomId === activeRoom) {
-          return <li key={message.key}>{message.message}</li>
+          return <div> <div className="center"> <h3 key={message.key}>{message.username} </h3>
+          <h4 key={message.key}>{message.message} </h4> </div>
+          <h4 className="time" key={message.key}>{message.sentAt} </h4>
+          </div>
+
         }
         return null;
       })
