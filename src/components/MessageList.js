@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Moment from 'react-moment';
+import User from './User.js'
 import '../styles/MessageList.css';
 
 export class MessageList extends Component {
@@ -18,7 +20,7 @@ export class MessageList extends Component {
   handleChange(e) {
     e.preventDefault();
     this.setState({
-      username: "user",
+      username: this.props.user,
       message: e.target.value,
       sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
       roomId: this.props.activeRoom
@@ -62,7 +64,7 @@ export class MessageList extends Component {
         if (message.roomId === activeRoom) {
           return <div> <div className="center"> <h3 key={message.key}>{message.username} </h3>
           <h4 key={message.key}>{message.message} </h4> </div>
-          <h4 className="time" key={message.key}>{message.sentAt} </h4>
+          <h4 className="time" key={message.key}><Moment fromNow>{message.sentAt}</Moment> </h4>
           </div>
 
         }

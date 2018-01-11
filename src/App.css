@@ -23,8 +23,10 @@
 }
 
 .check{
-  background: blue;
+  float: left;
+  padding: 10px;
   width: 25%;
+  background: grey;
 }
 
 @keyframes App-logo-spin {
