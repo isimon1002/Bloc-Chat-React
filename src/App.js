@@ -29,18 +29,23 @@ this.setState({ activeRoom: room })
 
 setUser(user) {
   this.setState({ user: user });
+  console.log(user)
+  console.log(this.state.user)
+  console.log(this.props.user)
+
 }
   render() {
     const showMessages = this.state.activeRoom;
+    const current_user = this.state.user === null ? "Guest user" : this.state.user.displayName;
     return (
       <div>
       <div className="check">
-        <h1>{this.state.activeRoom.name != undefined? "You selected " + this.state.activeRoom.name : "Select a Room"}</h1>
+        <h1>{this.state.activeRoom.name !== undefined?  current_user + " selected " + this.state.activeRoom.name : "Select a Room"}</h1>
         <User firebase={firebase} setUser={this.setUser} />
         <RoomList firebase={firebase} activeRoom={this.activeRoom} />
         </div>
         { showMessages ?
-        (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key}/>)
+        (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} user={current_user}/>)
         : (null)
         }
       </div>

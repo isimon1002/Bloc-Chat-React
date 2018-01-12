@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
-import User from './User.js'
 import '../styles/MessageList.css';
 
 export class MessageList extends Component {
@@ -25,6 +24,7 @@ export class MessageList extends Component {
       sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
       roomId: this.props.activeRoom
     });
+        console.log(this.props.user)
   }
 
   createMessage(e) {
@@ -63,8 +63,8 @@ export class MessageList extends Component {
       this.state.messages.map((message) => {
         if (message.roomId === activeRoom) {
           return <div> <div className="center"> <h3 key={message.key}>{message.username} </h3>
-          <h4 key={message.key}>{message.message} </h4> </div>
-          <h4 className="time" key={message.key}><Moment fromNow>{message.sentAt}</Moment> </h4>
+          <h4> {message.message} </h4> </div>
+          <h4 className="time"><Moment fromNow>{message.sentAt}</Moment> </h4>
           </div>
 
         }

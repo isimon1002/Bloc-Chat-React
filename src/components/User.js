@@ -12,6 +12,8 @@ signIn() {
   this.props.firebase.auth().signInWithPopup(provider).then((result) => {
     const user = result.user;
     this.props.setUser(user);
+    console.log(user)
+    console.log(this.props.user)
   });
 }
 
@@ -37,4 +39,4 @@ componentDidMount() {
   }
 }
 
-export default User
+export default User;
