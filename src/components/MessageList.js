@@ -49,6 +49,10 @@ export class MessageList extends Component {
     });
   }
 
+  deleteMessage(message) {
+    this.messagesRef.child(message.key).remove();
+  }
+
   render() {
     const activeRoom = this.props.activeRoom;
 
@@ -64,6 +68,7 @@ export class MessageList extends Component {
         if (message.roomId === activeRoom) {
           return <div> <div className="center"> <h3 key={message.key}>{message.username} </h3>
           <h4> {message.message} </h4> </div>
+          <p key={message.key} onClick={(e) => this.deleteMessage(message)}>{"delete"}</p>
           <h4 className="time"><Moment fromNow>{message.sentAt}</Moment> </h4>
           </div>
 

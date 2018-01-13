@@ -31,13 +31,20 @@ createRoom(e) {
     });
   }
 
-  selectRoom(room) {
+selectRoom(room) {
   this.props.activeRoom(room);
+}
+
+deleteRoom(room) {
+  this.roomsRef.child(room.key).remove();
 }
 
   render() {
     const roomList = this.state.rooms.map((room) =>
+    <div>
       <li key={room.key} onClick={(e) => this.selectRoom(room, e)}>{room.name}</li>
+      <h4 key={room.key} onClick={(e) => this.deleteRoom(room)}>{"delete " + room.name}</h4>
+      </div>
     );
 
     const roomForm = (
