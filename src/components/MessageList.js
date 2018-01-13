@@ -67,8 +67,8 @@ export class MessageList extends Component {
       this.state.messages.map((message) => {
         if (message.roomId === activeRoom) {
           return <div> <div className="center"> <h3 key={message.key}>{message.username} </h3>
-          <h4> {message.message} </h4> </div>
-          <p key={message.key} onClick={(e) => this.deleteMessage(message)}>{"delete"}</p>
+          <h4> {message.message} </h4>
+          <p key={message.key} onClick={(e) => this.deleteMessage(message)}>{"delete"}</p></div>
           <h4 className="time"><Moment fromNow>{message.sentAt}</Moment> </h4>
           </div>
 
