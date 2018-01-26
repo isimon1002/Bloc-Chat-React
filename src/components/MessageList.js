@@ -66,12 +66,20 @@ export class MessageList extends Component {
     const messageList = (
       this.state.messages.map((message) => {
         if (message.roomId === activeRoom) {
-          return <div> <div className="center"> <h3 key={message.key}>{message.username} </h3>
+          return <div> <div> <h3 key={message.key}>{message.username} </h3>
           <h4> {message.message} </h4>
-          <p key={message.key} onClick={(e) => this.deleteMessage(message)}>{"delete"}</p></div>
-          <h4 className="time"><Moment fromNow>{message.sentAt}</Moment> </h4>
+          <button key={message.key} onClick={(e) => this.deleteMessage(message)}>{"delete"}</button>
           </div>
+          </div>
+        }
+        return null;
+      })
+    );
 
+    const messageTime = (
+      this.state.messages.map((message) => {
+        if (message.roomId === activeRoom) {
+          return <div><h4><Moment fromNow>{message.sentAt}</Moment></h4><br/><br/><br/></div>
         }
         return null;
       })
@@ -80,7 +88,8 @@ export class MessageList extends Component {
     return(
       <div>
         <div>{messageBar}</div>
-        <ul>{messageList}</ul>
+        <div className="center">{messageList}</div>
+        <ul className="time">{messageTime}</ul>
       </div>
     );
   }

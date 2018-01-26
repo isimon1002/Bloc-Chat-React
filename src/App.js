@@ -44,10 +44,12 @@ setUser(user) {
         <User firebase={firebase} setUser={this.setUser} />
         <RoomList firebase={firebase} activeRoom={this.activeRoom} />
         </div>
+        <div className="center">
         { showMessages ?
         (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} user={current_user}/>)
         : (null)
         }
+      </div>
       </div>
     );
   }
